@@ -32,8 +32,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, darkM
   const visibleItems = menuItems.filter(item => !item.adminOnly || isAdmin);
   const roleBadgeColor = user?.role === 'admin'
     ? 'bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300'
-    : user?.role === 'manager'
-    ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300'
     : 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300';
 
   const roleLabel = (user?.role || 'cashier').charAt(0).toUpperCase() + (user?.role || 'cashier').slice(1);
