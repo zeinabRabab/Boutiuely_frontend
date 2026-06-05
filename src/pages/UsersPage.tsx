@@ -9,18 +9,14 @@ import { Button, Input, Select, Alert, Badge, LoadingSpinner, EmptyState } from 
 import { useAuth } from '../context/AuthContext';
 
 const ROLE_OPTIONS = [
-  { value: 'cashier',  label: 'Cashier'  },
-  { value: 'manager',  label: 'Manager'  },
-  { value: 'admin',    label: 'Admin'    },
-  { value: 'viewer',   label: 'Viewer'   },
+  { value: 'cashier', label: 'Cashier' },
+  { value: 'admin',   label: 'Admin'   },
 ];
 const ROLE_FILTER = [{ value: '', label: 'All Roles' }, ...ROLE_OPTIONS];
 
-const ROLE_META: Record<string, { icon: React.ReactNode; variant: 'purple'|'blue'|'green'|'gray'; label: string }> = {
-  admin:   { icon: <Shield size={11}/>,   variant: 'purple', label: 'Admin'   },
-  manager: { icon: <Briefcase size={11}/>,variant: 'blue',   label: 'Manager' },
+const ROLE_META: Record<string, { icon: React.ReactNode; variant: 'purple' | 'green'; label: string }> = {
+  admin:   { icon: <Shield size={11}/>, variant: 'purple', label: 'Admin'   },
   cashier: { icon: <UserIcon size={11}/>, variant: 'green',  label: 'Cashier' },
-  viewer:  { icon: <Eye size={11}/>,      variant: 'gray',   label: 'Viewer'  },
 };
 
 const empty = { name: '', email: '', password: '', role: 'cashier' };
@@ -197,10 +193,9 @@ export const UsersPage: React.FC = () => {
                       <td className="px-4 py-3 text-gray-600 dark:text-gray-400 text-xs">{u.email}</td>
                       <td className="px-4 py-3">
                         <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${
-                          u.role === 'admin' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300'
-                          : u.role === 'manager' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
-                          : u.role === 'viewer' ? 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
-                          : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                          u.role === 'admin'
+                            ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300'
+                            : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
                         }`}>
                           {meta.icon} {meta.label}
                         </span>
@@ -256,9 +251,7 @@ export const UsersPage: React.FC = () => {
               <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3 text-xs text-gray-500 dark:text-gray-400 space-y-1">
                 <p className="font-medium text-gray-700 dark:text-gray-300">Role permissions:</p>
                 <p><span className="font-medium text-purple-600">Admin</span> — Full access, manage users & settings</p>
-                <p><span className="font-medium text-blue-600">Manager</span> — Manage products, orders & reports</p>
                 <p><span className="font-medium text-green-600">Cashier</span> — View & process orders</p>
-                <p><span className="font-medium text-gray-600">Viewer</span> — Read-only access</p>
               </div>
             </div>
             <div className="px-5 py-4 border-t border-gray-100 dark:border-gray-700 flex justify-end gap-2">
