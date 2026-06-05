@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --boutique-purple: #a427d4;
+  --boutique-light: #fdf4ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Custom scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c084fc; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+.dark ::-webkit-scrollbar-thumb { background: #7c3aed; }
+
+/* ── Smooth transitions ────────────────────────────────────────────── */
+*, *::before, *::after {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+/* ── Dark mode improvements ────────────────────────────────────────── */
+.dark body { background-color: #0f0f14; }
+
+/* Better card depth in dark mode */
+.dark .bg-white { background-color: #1a1a27 !important; }
+.dark .bg-gray-50 { background-color: #0f0f14 !important; }
+.dark .bg-gray-800 { background-color: #1a1a27 !important; }
+.dark .bg-gray-900 { background-color: #111118 !important; }
+.dark .bg-gray-950 { background-color: #09090e !important; }
+.dark .border-gray-100 { border-color: #2a2a3d !important; }
+.dark .border-gray-200 { border-color: #2a2a3d !important; }
+.dark .border-gray-700 { border-color: #2a2a3d !important; }
+.dark .border-gray-800 { border-color: #1e1e2e !important; }
+
+/* Chart visibility in dark mode */
+.dark .recharts-cartesian-grid line { stroke: #2a2a3d !important; }
+.dark .recharts-text { fill: #9ca3af !important; }
+
+/* Recharts tooltip polish */
+.recharts-default-tooltip {
+  border-radius: 10px !important;
+  border: 1px solid #e9d5ff !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.1) !important;
+}
+.dark .recharts-default-tooltip {
+  background-color: #1a1a27 !important;
+  border-color: #2a2a3d !important;
+  color: #e5e7eb !important;
+}
+
+/* ── Animations ────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.25s ease forwards; }
+
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.96) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-modal-in { animation: modal-in 0.18s ease-out; }
+
+@keyframes pulse-glow {
+  0%,100% { box-shadow: 0 0 0 0 rgba(164, 39, 212, 0.25); }
+  50%      { box-shadow: 0 0 0 8px rgba(164, 39, 212, 0); }
+}
+.pulse-glow { animation: pulse-glow 2s infinite; }
+
+/* ── Card hover effect ─────────────────────────────────────────────── */
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+  transform: translateY(-1px);
+}
+.dark .card-hover:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,.4);
+}
